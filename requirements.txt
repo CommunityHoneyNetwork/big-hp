@@ -1,0 +1,5 @@
+flask
+hpfeeds3
+gunicorn
+gevent
+fluent-logger

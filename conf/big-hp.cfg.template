@@ -1,0 +1,33 @@
+[bighp]
+ip_address =
+reported_ip =
+hostname =
+reported_port = 80
+
+
+[jsonlog]
+enabled = True
+json_file = big-hp.json
+log_get = False
+
+
+[hpfeeds]
+enabled = False
+server =
+port = 10000
+ident =
+secret =
+tags =
+log_get = False
+
+
+[stingar]
+enabled = False
+fluent_host =
+fluent_port = 24284
+app =
+hostname =
+identifier =
+tags =
+asn =
+log_get = False
