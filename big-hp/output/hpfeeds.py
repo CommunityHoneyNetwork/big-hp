@@ -19,8 +19,4 @@ class HpfeedsOutput:
         self.client = hpfeeds.new(self.server, self.port, self.ident, self.secret)
 
     def write(self, data):
-        if (self.log_get is False) and (data.get('method') == "GET"):
-            return
-        print("writing hpfeeds...")
         self.client.publish(self.channel, json.dumps(data).encode('utf-8'))
-        print("hpfeeds written.")

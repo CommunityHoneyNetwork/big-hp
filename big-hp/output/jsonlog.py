@@ -10,7 +10,6 @@ class JsonOutput:
     """
 
     def __init__(self, config):
-        self.log_get = config.getboolean('jsonlog', 'log_get', fallback=False)
         json_fname = config.get('jsonlog', 'json_file')
         self.outfile = open(json_fname, 'a')
 

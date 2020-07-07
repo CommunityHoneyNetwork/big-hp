@@ -105,3 +105,25 @@ def set_img_headers(resp):
     resp.headers.set("Cache-Control", "max-age=18000")
     resp.headers.set("Content-Type", "image/png")
     return resp
+
+
+def set_favicon_headers(resp):
+    resp.headers.set("Server", "Apache")
+    resp.headers.set("X-Frame-Options", "SAMEORIGIN")
+    resp.headers.set("Strict-Transport-Security", "max-age=16070400; includeSubDomains")
+    resp.headers.set("ETag", '"5c06-597db38323600"')
+    resp.headers.set("Accept-Ranges", "bytes")
+    resp.headers.set("X-Content-Type-Options", "nosniff")
+    resp.headers.set("X-XSS-Protection", "1; mode=block")
+    resp.headers.set("Content-Security-Policy",
+                     "default-src 'self'  'unsafe-inline' 'unsafe-eval' data: blob:; img-src 'self' data:  http://127.4.1.1 http://127.4.2.1")
+    resp.headers.set("Content-Type", "image/vnd.microsoft.icon")
+    return resp
+
+
+def set_404_headers(resp):
+    resp.headers.set("Server", "Apache")
+    resp.headers.set("X-Frame-Options", "SAMEORIGIN")
+    resp.headers.set("Strict-Transport-Security", "max-age=16070400; includeSubDomains")
+    resp.headers.set("Content-Type", "text/html; charset=iso-8859-1")
+    return resp

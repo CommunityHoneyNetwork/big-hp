@@ -19,11 +19,6 @@ if not conf:
 output = output.Output(conf)
 
 
-@app.before_request
-def log_request():
-    output.write(request)
-
-
 @app.route('/')
 def root():
     resp = make_response(render_template("root.jinja2"))
@@ -41,6 +36,7 @@ def redirect():
 
 @app.route('/tmui/login.jsp')
 def login():
+    output.write(request)
     resp = make_response(render_template("login.jinja2",
                                          hostname=conf.get("bighp", "hostname", fallback=""),
                                          ip_address=conf.get("bighp", "ip_address", fallback="")))
@@ -60,6 +56,7 @@ def welcome():
 
 @app.route('/tmui/logmein.html', methods=['POST'])
 def logmein():
+    output.write(request)
     return flask.redirect("/tmui/login.jsp?msgcode=1&")
 
 
@@ -130,6 +127,23 @@ def logo_f5():
 def background_banner():
     with open(os.path.join('static', 'img', 'background_banner.png'), 'rb') as f:
         resp = make_response(f.read())
+    resp = utils.set_root_headers(resp)
+    return resp
+
+
+@app.route('/xui/common/images/favicon.ico')
+def favicon():
+    with open(os.path.join('static', 'img', 'favicon.ico'), 'rb') as f:
+        resp = make_response(f.read())
+    resp = utils.set_favicon_headers(resp)
+    return resp
+
+
+@app.errorhandler(404)
+def not_found(e):
+    output.write(request)
+    path = request.path
+    resp = make_response(render_template("404.jinja2", path=path), 404)
     resp = utils.set_root_headers(resp)
     return resp
 

@@ -22,8 +22,6 @@ class StingarOutput:
         self.sender = sender.FluentSender(app, host=fluent_host, port=fluent_port)
 
     def write(self, data):
-        if (self.log_get is False) and (data.get('method') == "GET"):
-            return
         event = {'app': 'spylex',
                  'sensor': {
                      'uuid': self.identifier,
@@ -47,6 +45,4 @@ class StingarOutput:
                      'headers': data.get('headers'),
                      'files': data.get('files')}
                  }
-        print("writing stingar event...")
         self.sender.emit(SPYLEX_TOPIC, event)
-        print("stingar event written.")
