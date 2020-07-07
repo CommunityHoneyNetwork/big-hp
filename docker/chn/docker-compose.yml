@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  bighp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "443:8000"
