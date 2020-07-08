@@ -47,6 +47,21 @@ def set_welcome_headers(resp):
     return resp
 
 
+def set_legal_headers(resp):
+    resp.headers.set("Server", "Apache")
+    resp.headers.set("X-Frame-Options", "SAMEORIGIN")
+    resp.headers.set("Strict-Transport-Security", "max-age=16070400; includeSubDomains")
+    resp.headers.set("ETag", '"418-597db09680fc0-gzip"')
+    resp.headers.set("Accept-Ranges", "bytes")
+    resp.headers.set("Content-Type", "text/html; charset=ISO-8859-1")
+    resp.headers.set("Vary", "Accept-Encoding")
+    resp.headers.set("X-Content-Type-Options", "nosniff")
+    resp.headers.set("X-XSS-Protection", "1; mode=block")
+    resp.headers.set("Content-Security-Policy",
+                     "default-src 'self'  'unsafe-inline' 'unsafe-eval' data: blob:; img-src 'self' data:  http://127.4.1.1 http://127.4.2.1")
+    return resp
+
+
 def set_blank_headers(resp):
     resp.headers.set("Server", "Apache")
     resp.headers.set("X-Frame-Options", "SAMEORIGIN")

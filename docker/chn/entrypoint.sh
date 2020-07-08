@@ -34,6 +34,7 @@ main () {
 
     export BIGHP_bighp__ip_address="${IP_ADDRESS}"
     export BIGHP_bighp__reported_ip="${REPORTED_IP}"
+    export BIGHP_bighp__reported_port="${REPORTED_PORT}"
     export BIGHP_bighp__hostname="${HOSTNAME}"
     export BIGHP_hpfeeds__enabled="True"
     export BIGHP_hpfeeds__server="${FEEDS_SERVER}"

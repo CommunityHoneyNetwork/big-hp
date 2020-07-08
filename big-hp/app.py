@@ -46,6 +46,13 @@ def login():
     return resp
 
 
+@app.route('/tmui/tmui/login/legal.html')
+def legal():
+    resp = make_response(render_template("legal.jinja2"))
+    resp = utils.set_legal_headers(resp)
+    return resp
+
+
 @app.route('/tmui/tmui/login/welcome.jsp')
 def welcome():
     resp = make_response(render_template("welcome.jinja2",
