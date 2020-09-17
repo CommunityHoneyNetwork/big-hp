@@ -3,7 +3,9 @@ FROM python:alpine3.7
 ENV CONFIG "/opt/big-hp/big-hp.cfg"
 ENV BIGHP_JSON "/etc/big-hp/big-hp.json"
 
-RUN apk add git python3-dev libffi-dev gcc musl-dev make openssl bash jq
+# hadolint ignore=DL3018
+RUN apk add --no-cache git python3-dev libffi-dev gcc musl-dev make openssl bash jq \
+  && rm /var/cache/apk/*
 WORKDIR /opt
 COPY requirements.txt .
 RUN pip install -r requirements.txt
