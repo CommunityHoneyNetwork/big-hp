@@ -3,3 +3,5 @@ hpfeeds3
 gunicorn
 gevent
 fluent-logger
+containedenv>=0.0.3
+chnutils>=0.0.7
