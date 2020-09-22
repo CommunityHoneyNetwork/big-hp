@@ -6,3 +6,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "443:8000"
+    env_file:
+      - big-hp.env

@@ -16,6 +16,8 @@ main () {
     then
       set -o xtrace
       BIGHP_DEBUG="-v"
+    else
+      BIGHP_DEBUG=""
     fi
 
     # Register this host with CHN if needed
